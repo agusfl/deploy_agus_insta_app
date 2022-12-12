@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Agus app</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" rel="stylesheet" />
+    <!-- 
+        Table boostrap - Data table plug in (import css and java script) 
+        - Info sobre data table: https://codingbirdsonline.com/how-to-integrate-data-table-plugin-in-html-and-css/
+        - Mas info: https://cdn.datatables.net/
+        -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">Go to the top</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#app">Select Ig user</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h1 class="mx-auto my-0 text-uppercase">Search user</h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Click the start button and select the instagram user you
+                        would like to search and obtain the list of people who not follow him/her back
+                    </h2>
+                    <a class="btn btn-primary" href="#app">Start</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- The actual app - list of people who not follow you back-->
+    <section class="projects-section bg-light" id="app">
+        <div class="container" id="search_button">
+            <!-- Insert form so the user can introduce the ig username to search -->
+            <h2 style="color: #64a19d">Select the instagram user name that you want to search</h2>
+            <form method="post">
+                <label for="user_name">Please introduce the user name here:</label>
+                <input type="text" class="input_search_user" name="user_name" placeholder="Ig username"
+                    value="{{ request.form['user_name'] }}"></input>
+                <button type="submit" class="submit_search_user_button" id="button">Submit</button>
+                <!-- Spinner created with boostrap -->
+                <div class="d-flex justify-content-center" id="spinner_div">
+                    <!-- Con esta clase centro el spinner -> info: https://getbootstrap.com/docs/5.2/components/spinners/-->
+                    <!-- Le pongo display: none al texto de Loading please wait para que se muestre solo cuando se apreta el boton de submit, igual que el spinner -->
+                    <strong class="loading_spin" style="display: none">Loading please wait</strong>
+                    <div class="spinner-border" role="status" style="display: none">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <!-- Import JavaScript to show the spinner when the submit button is clicked -->
+                <script src="../static/js/spinner.js"></script>
+            </form>
+            <br>
+            <p>If you would like to see the information of the <b>previously searched user</b> please click
+                <a href="{{ url_for('last_searched_user') }}">here</a>
+            </p>
+            <p><b>Important:</b> If the user account that you want to search has a private ig account you need
+                to request to the <b>Agus Insta app</b> team to follow that account.
+                <br>
+                You can contact the team from the home page in the <a href="{{ url_for('index') }}">contact</a> section.
+            </p>
+            <div class="content">
+                {% for message in get_flashed_messages() %}
+                <div class="alert">{{ message }}</div>
+                {% endfor %}
+                {% block content %} {% endblock %}
+            </div>
+            <style>
+                .message {
+                    padding: 10px;
+                    margin: 5px;
+                    background-color: #f3f3f3
+                }
+
+                .alert {
+                    padding: 20px;
+                    margin: 5px;
+                    color: #970020;
+                    background-color: #ffd5de;
+                }
+            </style>
+            <br>
+            <style>
+                #thead>tr>th {
+                    color: white;
+                }
+            </style>
+        </div>
+        <!-- Footer-->
+        <div class="container px-4 px-lg-5" id="footer">Copyright &copy; Agus app 2022</div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../static/js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>
