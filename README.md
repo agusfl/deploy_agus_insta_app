@@ -71,29 +71,9 @@ Como llamamos a nuestro archivo "app.py" al poner "flask run" se va a buscar por
 
 **Importante:** Recordar crear un archivo ``.env`` con el usuario y clave de la cuenta de ig usada. 
 
-## Vercel - deploy:
-
-Una vez terminado el proyecto voy a intentar hacer el deploy con ``vercel`` --> info sobre **vercel** en este [link](https://vercel.com/docs).
-
-Ya hice algunas pruebas para hacer el deploy con este proyecto con vercel y cuando haces el deploy automaticamente un **bot** de vercel te manda mails cada vez que haces un commit en el repo. Para desactivar esta opcion cree el archivo ``vercel.json`` donde podes configurar determinadas cosas, entre esas esta la opcion: 
-
-"github": {
-      "silent": true
-     }
-
-Use dicha opcion para que no me lleguen notificaciones cada vez que hago un nuevo commit en el repo.
-
-Info sobre la configuracion de vercel en este [link](https://vercel.com/docs/concepts/git/vercel-for-github?utm_source=github&utm_medium=marketplace&utm_campaign=vercel-app).
-
 ## Notas: 
 
 * **IMPORTANTE** tener en cuenta que cuando se dan errores y no se genera el ``archivo txt`` con la lista de personas que seguis y no te siguen suele ser por problemas de que bloquearon la cuenta de ig con la que nos loggeamos por lo tanto en estos casos conviene entrar manualmente a instagram y fijarse si la cuenta esta bloqueada y en caso de que lo este desbloquearla.
-* Esta es la [pagina](https://www.digitalocean.com/community/tutorials/how-to-use-web-forms-in-a-flask-application) de donde saque la info para **"linkear" y poder mandar cosas desde el front al back**, en mi caso mando el nombre del ``usuario de ig`` que se quiere buscar atraves de un formulario en el front al back end.
-* Se usa un archivo ``.env`` para setear las variables de entorno, como ser: el usuario y contraseña del usuario con el que nos loggeamos en instagram.
-- Info sobre .env file y como usarlo en este [link](https://dev.to/jakewitcher/using-env-files-for-environment-variables-in-python-applications-55a1).
-* Si solo queremos ver la lista de personas que no te siguen impresa en la consola correr solo el siguiente programa: [read_instaloader_file.py](https://github.com/agusfl/code_tests/blob/main/instagram/instaloader_module/web_flask-instaloader_page/read_instaloader_file.py) luego de haber realizado el ``paso 1 y 2`` explicados en este [link](https://github.com/agusfl/code_tests/blob/main/instagram/instaloader_module/README.md).
-* Info para hacer el **spinner** mientras se cargan los datos: use el ``chatbot de GPT (IA)`` y tmb la info de ``bootstrap`` de este [link](https://getbootstrap.com/docs/5.2/components/spinners/), hice comentarios en el codigo de: search_user.html
-
 
 ## Authors :pen:
 
