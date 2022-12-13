@@ -1,6 +1,21 @@
 {
-    "github": {
-      "silent": true
-     }
-  }
-  
+    "version": 2,
+    "name": "deploy_agus_insta_app",
+    "builds": [
+      {
+        "src": "*.py",
+        "use": "@vercel/python",
+        "config": {
+          "github": {
+            "silent": true
+          }
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "app.py"
+      }
+    ]
+  }  
