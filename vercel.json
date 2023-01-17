@@ -5,6 +5,7 @@
       {
         "src": "*.py",
         "use": "@vercel/python",
+        "timeout": 300,
         "config": {
           "github": {
             "silent": true
@@ -17,8 +18,5 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ],
-    "functions": {
-        "timeout": 900
-    }
+    ]
 }
