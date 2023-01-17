@@ -19,6 +19,6 @@
       }
     ],
     "functions": {
-        "timeout": 900
+        "timeout": 300
       }
   }  
