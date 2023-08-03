@@ -14,6 +14,7 @@ from flask import Flask, render_template, request, flash, url_for, redirect
 # Se crea una instancia de flask con el nombre del archivo nuestro
 app = Flask(__name__)
 # Genere el string con el siguiente codigo: os.urandom(24).hex()
+# Info sobre porque se usa una "SECRET_KEY": https://www.reddit.com/r/flask/comments/m0z7s1/need_some_help_understanding_the_use_of_a_flask/
 app.config['SECRET_KEY'] = '6df63440284a1d432eb39ed1fed35a3b64d1bce64bf4bb9b'
 
 @app.route("/", strict_slashes=False)
